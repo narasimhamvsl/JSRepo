@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tabs</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e7e7e7;
+        }
+
+        .tab {
+            width: 500px;
+            overflow: hidden;
+            
+        }
+
+        .tab button {
+            background: #90caf8;
+            border: none;
+            outline:none;
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer; 
+            transition: background 0.3s;
+        }
+
+        .tab button:hover {
+            background: #74aedd;
+        }
+
+        .tab button.active {
+            background: #fff;
+        }
+
+        .tabcontent {
+            background: #fff;
+            width: 500px;
+            padding :12px;
+            font-family: ariel;
+            line-height: 21px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks" data-tab="tab1">LOGIN</button>
+        <button class="tablinks" data-tab="tab2">REGISTER</button>
+        <button class="tablinks" data-tab="tab3">CONTACT US</button>
+    </div>
+
+    <div id="tab1" class="tabcontent">
+        <h2>Sign In</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sit voluptates quia. Laudantium voluptatibus maxime cum atque eligendi eveniet commodi, ipsam reprehenderit numquam omnis qui consequatur id dignissimos, ipsa alias.</p>
+    </div>
+
+    <div id="tab2" class="tabcontent">
+        <h2>Sign Up</h2>
+        <p>hay Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore consectetur suscipit explicabo incidunt saepe eum consequatur mollitia ipsum facere. Quaerat, minima. Quasi deleniti nesciunt aspernatur quis alias eum beatae a.</p>
+    </div>
+
+    <div id="tab3" class="tabcontent">
+        <h2>CONTACT US</h2>
+        <p>OYE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum a tenetur totam ab, porro voluptas quae sapiente in autem harum eius magnam delectus illum, molestiae sed rerum et magni ratione?</p>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tablinks');
+
+        for(var i=0; i < tabButtons.length; i++){
+            tabButtons[i].addEventListener('click', function() {
+                var tabName = this.dataset.tab;
+                var tabContent = document.getElementById(tabName);
+
+                var allTabContent = document.querySelectorAll('.tabcontent');
+                var allTabButtons = document.querySelectorAll('.tablinks');
+                
+                for(var j=0; j<allTabContent.length; j++){
+                    allTabContent[j].style.display = 'none';
+                }
+
+                for(var k=0; k<allTabButtons.length; k++){
+                    allTabButtons[k].classList.remove('active');
+                }
+
+                tabContent.style.display = "block";
+                this.classList.add('active');
+
+            });
+        }
+
+        document.querySelector('.tablinks').click();
+
+    </script>
+</body>
+</html>
